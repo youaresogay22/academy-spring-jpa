@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "id": "nhn",
-  "password": "academy"
+  "password": "academy",
+  "age": 11
 }
 
 ###
@@ -28,5 +29,6 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-  "password": "hahaha"
+  "password": "hahaha",
+  "age": 21
 }

@@ -18,6 +18,10 @@ public class UserRegisterRequestValidator implements Validator {
         UserRegisterRequest request = (UserRegisterRequest) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "", "password cannot be null");
+
+        if (request.getAge() < 0 || request.getAge() > 100) {
+            errors.rejectValue("age", "", "age cannot be smaller than zero or greater than 100");
+        }
     }
 
 }

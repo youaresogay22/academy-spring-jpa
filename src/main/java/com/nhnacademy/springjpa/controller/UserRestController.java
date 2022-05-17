@@ -44,7 +44,7 @@ public class UserRestController {
             throw new ValidationFailedException(bindingResult);
         }
 
-        if (!userRepository.modifyUser(user.getId(), request.getPassword())) {
+        if (!userRepository.modifyUser(user.getId(), request.getPassword(), request.getAge())) {
             throw new UserModifyFailedException();
         }
 

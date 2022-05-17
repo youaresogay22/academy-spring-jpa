@@ -8,8 +8,8 @@ public interface UserRepository {
 
     User getUser(String id);
 
-    boolean addUser(String id, String password);
+    boolean addUser(String id, String password, int age);
 
-    boolean modifyUser(String id, String password);
+    boolean modifyUser(String id, String password, int age);
 
 }
