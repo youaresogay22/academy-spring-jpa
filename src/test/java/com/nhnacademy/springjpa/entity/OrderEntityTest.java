@@ -13,8 +13,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
 
+// TODO #2: 아래 `@Disabled` 어노테이션을 삭제하고 테스트를 통과시키세요.
+@Disabled("temporary")
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -22,14 +25,16 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = RootConfig.class),
     @ContextConfiguration(classes = WebConfig.class)
 })
-public class ItemEntityTest {
+public class OrderEntityTest {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Test
-    public void testItemEntity() {
-        Item item1 = entityManager.find(Item.class, 1L);
-        assertThat(item1.getItemId().longValue()).isEqualTo(1L);
+    public void testOrderEntity() {
+        Order order1 = entityManager.find(Order.class, 1001L);
+
+        assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderId")).isEqualTo(1001L);
+        assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderDate")).isNotNull();
     }
 
 }
