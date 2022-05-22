@@ -1,6 +1,15 @@
 package com.nhnacademy.springjpa.entity;
 
-// TODO #1: `Items` 테이블과 맵핑될 `Item` Entity 클래스를 작성하세요.
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /*
  *
  * create table if not exists `Items` (
@@ -12,9 +21,20 @@ package com.nhnacademy.springjpa.entity;
  * );
  *
  */
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "Items")
 public class Item {
-    public Long getItemId() {
-        return null;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item_id")
+    private Long itemId;
+
+    @Column(name = "item_name")
+    private String itemName;
+
+    private Long price;
 
 }
