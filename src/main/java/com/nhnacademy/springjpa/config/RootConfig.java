@@ -1,15 +1,12 @@
 package com.nhnacademy.springjpa.config;
 
 import com.nhnacademy.springjpa.Base;
+import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
-
-import javax.sql.DataSource;
-import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @ComponentScan(basePackageClasses = Base.class,
@@ -36,11 +33,6 @@ public class RootConfig {
         dataSource.setTestWhileIdle(true);
 
         return dataSource;
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
     }
 
 }

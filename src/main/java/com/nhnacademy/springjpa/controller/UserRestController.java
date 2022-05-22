@@ -1,7 +1,7 @@
 package com.nhnacademy.springjpa.controller;
 
-import com.nhnacademy.springjpa.domain.User;
 import com.nhnacademy.springjpa.domain.UserModifyRequest;
+import com.nhnacademy.springjpa.entity.User;
 import com.nhnacademy.springjpa.exception.UserNotFoundException;
 import com.nhnacademy.springjpa.exception.ValidationFailedException;
 import com.nhnacademy.springjpa.service.UserService;

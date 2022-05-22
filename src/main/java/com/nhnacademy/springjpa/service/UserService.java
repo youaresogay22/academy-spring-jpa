@@ -1,6 +1,7 @@
 package com.nhnacademy.springjpa.service;
 
-import com.nhnacademy.springjpa.domain.User;
+
+import com.nhnacademy.springjpa.entity.User;
 
 public interface UserService {
     User getUser(String id);

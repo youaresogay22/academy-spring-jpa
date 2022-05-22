@@ -1,8 +1,6 @@
 package com.nhnacademy.springjpa.service;
 
-import com.nhnacademy.springjpa.domain.User;
-import com.nhnacademy.springjpa.exception.UserModifyFailedException;
-import com.nhnacademy.springjpa.exception.UserRegisterFailedException;
+import com.nhnacademy.springjpa.entity.User;
 import com.nhnacademy.springjpa.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,27 +15,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
-        return userRepository.getUser(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Transactional
     @Override
     public User createUser(String id, String password) {
-        if (!userRepository.addUser(id, password)) {
-            throw new UserRegisterFailedException();
-        }
+        User user = new User();
+        user.setId(id);
+        user.setPassword(password);
 
-        return userRepository.getUser(id);
+        return userRepository.save(user);
     }
 
     @Transactional
     @Override
     public User modifyUser(User user) {
-        if (!userRepository.modifyUser(user.getId(), user.getPassword())) {
-            throw new UserModifyFailedException();
-        }
-
-        return userRepository.getUser(user.getId());
+        return userRepository.save(user);
     }
 
 }

@@ -1,15 +1,7 @@
 package com.nhnacademy.springjpa.repository;
 
-import com.nhnacademy.springjpa.domain.User;
+import com.nhnacademy.springjpa.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository {
-    boolean exists(String id);
-    boolean matches(String id, String password);
-
-    User getUser(String id);
-
-    boolean addUser(String id, String password);
-
-    boolean modifyUser(String id, String password);
-
+public interface UserRepository extends JpaRepository<User, String> {
 }
