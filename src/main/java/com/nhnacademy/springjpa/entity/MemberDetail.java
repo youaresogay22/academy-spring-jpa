@@ -1,5 +1,6 @@
 package com.nhnacademy.springjpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +10,6 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO #2: `MemberDetail` Entity
 @Getter
 @Setter
 @Entity
@@ -23,7 +23,8 @@ public class MemberDetail {
 
     private String description;
 
-    @ManyToOne
+    // TODO #1: 영속성 전이 설정
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "member_id")
     private Member member;
 

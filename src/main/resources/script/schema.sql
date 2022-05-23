@@ -90,7 +90,6 @@ create table if not exists `BoardDetails` (
     primary key (`board_id`)
 );
 
-/* TODO #1: 테이블 생성 쿼리 */
 create table if not exists `MemberDetails` (
     `member_detail_id` bigint not null,
     `member_id` varchar(255) not null,
