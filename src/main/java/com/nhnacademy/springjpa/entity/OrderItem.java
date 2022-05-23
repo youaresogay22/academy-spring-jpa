@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,13 +28,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "OrdersItems")
+@Table(name = "OrderItems")
 public class OrderItem {
     @EmbeddedId
     private Pk pk;
 
-    @Column(name = "item_id")
-    private Long itemId;
+    // TODO #1: 외래 키를 활용해 연관관계 설정
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     private Integer quantity;
 

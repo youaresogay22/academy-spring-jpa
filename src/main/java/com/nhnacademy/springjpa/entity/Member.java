@@ -27,7 +27,6 @@ public class Member {
     @OneToOne(mappedBy = "member")
     private Locker locker;
 
-    // TODO #1: 영속성 전이 설정
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<MemberDetail> memberDetails;
 
