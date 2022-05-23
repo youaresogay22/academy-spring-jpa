@@ -23,13 +23,12 @@ public class ManyToOneTest {
     @PersistenceContext
     EntityManager entityManager;
 
+    // TODO #2: 영속성 전이를 이용해서 저장하도록 수정
     @Test
     void test() {
         Member member = new Member();
         member.setId("nhn");
         member.setUserName("academy");
-
-        entityManager.persist(member);
 
         MemberDetail memberDetail1 = new MemberDetail();
         memberDetail1.setId(1L);
