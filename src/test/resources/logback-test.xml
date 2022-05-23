@@ -7,7 +7,6 @@
         </encoder>
     </appender>
 
-    <!-- TODO #2: JPA 쿼리 로깅, 교재 내용 참고 -->
     <logger name="org.hibernate.SQL" level="debug" additivity="false">
         <appender-ref ref="console" />
     </logger>
