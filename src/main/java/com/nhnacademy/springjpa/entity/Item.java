@@ -1,10 +1,10 @@
 package com.nhnacademy.springjpa.entity;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,6 @@ import lombok.Setter;
 @Table(name = "Items")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long itemId;
 
@@ -36,5 +35,9 @@ public class Item {
     private String itemName;
 
     private Long price;
+
+    // TODO #2: 일대다 양방향 관계 설정
+    @OneToMany(mappedBy = "item")
+    private List<OrderItem> orderItems;
 
 }
