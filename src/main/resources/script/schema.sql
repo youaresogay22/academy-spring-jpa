@@ -75,3 +75,18 @@ create table if not exists `Lockers` (
 
     primary key (`locker_id`)
 );
+
+/* TODO #1: 테이블 생성 쿼리 */
+create table if not exists `Boards` (
+    `board_id` bigint not null,
+    `title` varchar(50) not null,
+
+    primary key (`board_id`)
+);
+
+create table if not exists `BoardDetails` (
+    `board_id` bigint not null,
+    `content` varchar(255),
+
+    primary key (`board_id`)
+);

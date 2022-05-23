@@ -8,7 +8,6 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO #1: `Member` Entity에 양방향 연관관계 설정
 @Getter
 @Setter
 @Entity
