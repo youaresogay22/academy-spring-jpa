@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-// TODO #2: custom repository 구현
 public class ItemRepositoryImpl extends QuerydslRepositorySupport implements ItemRepositoryCustom {
     public ItemRepositoryImpl() {
         super(Item.class);
