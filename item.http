@@ -1,0 +1,11 @@
+// TODO #6: test REST APIs
+
+GET /v1/items/1
+Content-Type: application/json
+Host: localhost:8080
+
+###
+
+GET /v2/items/1
+Content-Type: application/json
+Host: localhost:8080
