@@ -6,6 +6,8 @@ import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Item;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = WebConfig.class)
 })
 public class ItemRepositoryTest {
+    @PersistenceContext
+    EntityManager entityManager;
+
     @Autowired
     private ItemRepository itemRepository;
 
@@ -34,6 +39,33 @@ public class ItemRepositoryTest {
         assertThat(itemRepository.existsByItemNameAndPrice("mango", 350L)).isTrue();
 
         itemRepository.flush();
+    }
+
+    // TODO #4: test cases
+    @Test
+    void test2() {
+        List<Item> items1 = itemRepository.getItemsHavingPriceAtLeast(250L);
+        assertThat(items1).hasSize(4);
+
+        List<Item> items2 = itemRepository.getItemsHavingPriceAtLeast2(250L);
+        assertThat(items2).hasSize(4);
+    }
+
+    @Test
+    void test3() {
+        Item item1 = itemRepository.findById(1L).get();
+        assertThat(item1.getItemName()).isEqualTo("apple");
+
+        int result = itemRepository.updateItemName(1L, "samsung");
+        itemRepository.flush();
+
+        Item item2 = itemRepository.findById(1L).get();
+        assertThat(item2.getItemName()).isNotEqualTo("samsung");
+
+        entityManager.clear();
+
+        item2 = itemRepository.findById(1L).get();
+        assertThat(item2.getItemName()).isEqualTo("samsung");
     }
 
 }
