@@ -12,7 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #4: test case
+// TODO #4: test case 수정
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -26,18 +26,18 @@ public class OneToOneTest {
 
     @Test
     void test() {
-        Locker locker = new Locker();
-        locker.setId(1L);
-        locker.setName("No.1 Locker");
-
-        entityManager.persist(locker);
-
         Member member = new Member();
         member.setId("nhn");
         member.setUserName("academy");
-        member.setLocker(locker);
 
         entityManager.persist(member);
+
+        Locker locker = new Locker();
+        locker.setId(1L);
+        locker.setName("No.1 Locker");
+        locker.setMember(member);
+
+        entityManager.persist(locker);
 
         entityManager.flush();
     }

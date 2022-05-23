@@ -3,11 +3,13 @@ package com.nhnacademy.springjpa.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO #2: `Locker` Entity
+// TODO #2: `Locker` Entity에 연관관계 설정
 @Getter
 @Setter
 @Entity
@@ -19,5 +21,9 @@ public class Locker {
 
     @Column(name = "locker_name")
     private String name;
+
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
 }

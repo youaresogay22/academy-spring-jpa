@@ -58,10 +58,12 @@ merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 4, 7, 1 )
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 5, 8, 5 );
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 6, 9, 1 );
 
-/* TODO #3: 테이블 생성 쿼리 */
+/* TODO #1: 테이블 생성 쿼리 수정 */
+drop table `Members`;
+drop table `Lockers`;
+
 create table if not exists `Members` (
     `member_id` varchar(255) not null,
-    `locker_id` bigint not null,
     `user_name` varchar(255),
 
     primary key (`member_id`)
@@ -69,6 +71,7 @@ create table if not exists `Members` (
 
 create table if not exists `Lockers` (
     `locker_id` bigint not null,
+    `member_id` varchar(255) not null,
     `locker_name` varchar(50),
 
     primary key (`locker_id`)
