@@ -1,11 +1,8 @@
 package com.nhnacademy.springjpa.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,9 +20,6 @@ public class MemberDetail {
 
     private String description;
 
-    // TODO #1: 영속성 전이 설정
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    // TODO #2: 다대일 연관관계 삭제
 
 }

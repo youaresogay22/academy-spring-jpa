@@ -58,8 +58,8 @@ merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 4, 7, 1 )
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 5, 8, 5 );
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 6, 9, 1 );
 
-drop table `Members`;
-drop table `Lockers`;
+drop table if exists `Members`;
+drop table if exists `Lockers`;
 
 create table if not exists `Members` (
     `member_id` varchar(255) not null,
@@ -90,9 +90,12 @@ create table if not exists `BoardDetails` (
     primary key (`board_id`)
 );
 
+/* TODO #4: MemberDetails.member_id 를 nullable 하게 수정해야 함 */
+drop table if exists `MemberDetails`;
+
 create table if not exists `MemberDetails` (
     `member_detail_id` bigint not null,
-    `member_id` varchar(255) not null,
+    `member_id` varchar(255) null,
     `type` varchar(45) not null,
     `description` varchar(255),
 
