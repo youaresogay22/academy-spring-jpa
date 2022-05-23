@@ -36,7 +36,6 @@ public class Item {
 
     private Long price;
 
-    // TODO #2: 일대다 양방향 관계 설정
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItems;
 
