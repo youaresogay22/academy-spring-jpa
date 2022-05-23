@@ -7,6 +7,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -33,12 +34,17 @@ public class OrderItem {
     @EmbeddedId
     private Pk pk;
 
-    // TODO #1: 외래 키를 활용해 연관관계 설정
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
 
     private Integer quantity;
+
+    // TODO #1: 다대일 식별 관계이므로 `@MapsId`를 사용
+    @MapsId("orderId")
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
 
     @NoArgsConstructor

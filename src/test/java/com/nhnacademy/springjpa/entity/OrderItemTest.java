@@ -1,5 +1,7 @@
 package com.nhnacademy.springjpa.entity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import java.util.Date;
@@ -13,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #3: test case
+// TODO #2: test case
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -51,6 +53,7 @@ public class OrderItemTest {
         orderItem1.setPk(new OrderItem.Pk(order1.getOrderId(), 1));
         orderItem1.setItem(item1);
         orderItem1.setQuantity(10);
+        orderItem1.setOrder(order1);
 
         entityManager.persist(orderItem1);
 
@@ -58,8 +61,11 @@ public class OrderItemTest {
         orderItem2.setPk(new OrderItem.Pk(order1.getOrderId(), 2));
         orderItem2.setItem(item2);
         orderItem2.setQuantity(3);
+        orderItem2.setOrder(order1);
 
         entityManager.persist(orderItem2);
+
+        assertThat(orderItem2.getOrder().getOrderId()).isEqualTo(order1.getOrderId());
 
         entityManager.flush();
     }
