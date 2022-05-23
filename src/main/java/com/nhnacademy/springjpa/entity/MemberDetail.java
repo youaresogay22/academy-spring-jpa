@@ -22,7 +22,6 @@ public class MemberDetail {
 
     private String description;
 
-    // TODO #1: 양방향 연관관계 설정
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
