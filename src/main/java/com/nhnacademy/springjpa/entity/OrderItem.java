@@ -40,7 +40,6 @@ public class OrderItem {
 
     private Integer quantity;
 
-    // TODO #1: 다대일 식별 관계이므로 `@MapsId`를 사용
     @MapsId("orderId")
     @ManyToOne
     @JoinColumn(name = "order_id")

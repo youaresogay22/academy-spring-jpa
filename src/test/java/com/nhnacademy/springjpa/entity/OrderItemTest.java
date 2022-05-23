@@ -15,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #2: test case
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
