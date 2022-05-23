@@ -26,9 +26,8 @@ public class Member {
     @OneToOne(mappedBy = "member")
     private Locker locker;
 
-    // TODO #1: 일대다 연관관계 설정
-    @OneToMany
-    @JoinColumn(name = "member_id")
+    // TODO #2: `mappedBy`를 이용해서 연관관계의 주인 설정.
+    @OneToMany(mappedBy = "member")
     private List<MemberDetail> memberDetails;
 
 }
