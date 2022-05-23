@@ -7,7 +7,6 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO #2: `Board` Entity
 @Getter
 @Setter
 @Entity

@@ -1,7 +1,5 @@
 package com.nhnacademy.springjpa.entity;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import javax.persistence.EntityManager;
@@ -21,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = RootConfig.class),
     @ContextConfiguration(classes = WebConfig.class)
 })
-public class OneToOneTest {
+public class ManyToOneTest {
     @PersistenceContext
     EntityManager entityManager;
 
@@ -33,35 +31,22 @@ public class OneToOneTest {
 
         entityManager.persist(member);
 
-        Locker locker = new Locker();
-        locker.setId(1L);
-        locker.setName("No.1 Locker");
-        locker.setMember(member);
+        MemberDetail memberDetail1 = new MemberDetail();
+        memberDetail1.setId(1L);
+        memberDetail1.setType("type1");
+        memberDetail1.setDescription("...");
+        memberDetail1.setMember(member);
 
-        entityManager.persist(locker);
+        entityManager.persist(memberDetail1);
 
-        member.setLocker(locker);
+        MemberDetail memberDetail2 = new MemberDetail();
+        memberDetail2.setId(2L);
+        memberDetail2.setType("type2");
+        memberDetail2.setDescription("설명 설명");
+        memberDetail2.setMember(member);
 
-        assertThat(member.getLocker().getName()).isEqualTo("No.1 Locker");
-
-        entityManager.flush();
-    }
-
-    @Test
-    void test2() {
-        Board board = new Board();
-        board.setId(1L);
-        board.setTitle("게시물 제목");
-
-        entityManager.persist(board);
-
-        BoardDetail boardDetail = new BoardDetail();
-        boardDetail.setBoard(board);
-        boardDetail.setContent("내용 내용 내용");
-
-        entityManager.persist(boardDetail);
+        entityManager.persist(memberDetail2);
 
         entityManager.flush();
     }
-
 }
