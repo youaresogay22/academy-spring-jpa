@@ -58,7 +58,6 @@ merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 4, 7, 1 )
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 5, 8, 5 );
 merge into `OrderItems` key (`order_id`, `line_number`) values ( 1002, 6, 9, 1 );
 
-/* TODO #1: 테이블 생성 쿼리 수정 */
 drop table `Members`;
 drop table `Lockers`;
 

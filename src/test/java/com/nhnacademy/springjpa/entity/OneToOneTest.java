@@ -1,5 +1,7 @@
 package com.nhnacademy.springjpa.entity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import javax.persistence.EntityManager;
@@ -12,7 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #4: test case 수정
+// TODO #2: test case 수정
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -38,6 +40,10 @@ public class OneToOneTest {
         locker.setMember(member);
 
         entityManager.persist(locker);
+
+        member.setLocker(locker);
+
+        assertThat(member.getLocker().getName()).isEqualTo("No.1 Locker");
 
         entityManager.flush();
     }
