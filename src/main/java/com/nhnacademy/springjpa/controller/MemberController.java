@@ -16,7 +16,6 @@ public class MemberController {
     }
 
     @GetMapping("/members")
-    // TODO #1: `?page=0&size=3`과 같은 request parameter를 `Pageable` 객체로 받음
     public List<MemberNameOnly> getMembers(Pageable pageable) {
         return memberRepository.getAllBy(pageable).getContent();
     }
