@@ -14,7 +14,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #2: test case 수정
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -44,6 +43,24 @@ public class OneToOneTest {
         member.setLocker(locker);
 
         assertThat(member.getLocker().getName()).isEqualTo("No.1 Locker");
+
+        entityManager.flush();
+    }
+
+    // TODO #4: test case
+    @Test
+    void test2() {
+        Board board = new Board();
+        board.setId(1L);
+        board.setTitle("게시물 제목");
+
+        entityManager.persist(board);
+
+        BoardDetail boardDetail = new BoardDetail();
+        boardDetail.setBoard(board);
+        boardDetail.setContent("내용 내용 내용");
+
+        entityManager.persist(boardDetail);
 
         entityManager.flush();
     }
