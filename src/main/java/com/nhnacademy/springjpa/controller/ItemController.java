@@ -38,7 +38,6 @@ public class ItemController {
         };
     }
 
-    // TODO #1: `GET /items?page=0&size=5` 와 같은 요청을 처리하도록
     @GetMapping("/items")
     public List<ItemDto> getItems(Pageable pageable) {
         return itemRepository.getAllBy(pageable).getContent();

@@ -10,8 +10,6 @@ Host: localhost:8080
 
 ###
 
-// TODO #3: pagination 요청 test
-
 GET /items?page=0&size=5
 Content-Type: application/json
 Host: localhost:8080

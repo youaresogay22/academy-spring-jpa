@@ -116,7 +116,6 @@ create table if not exists `CommentDetails` (
     primary key (`comment_detail_id`)
 );
 
-/* TODO #4: `Members` 테이블과 `MemberDetails` 테이블에 대한 초기 데이터 적재 */
 merge into `Members` key (`member_id`) values ( 'dongmyo', 'Shin Dongmin' );
 merge into `Members` key (`member_id`) values ( 'manty', 'Jung jibum' );
 merge into `Members` key (`member_id`) values ( 'jordan', 'Jung Myoungju' );
