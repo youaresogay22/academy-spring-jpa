@@ -16,8 +16,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #2: 아래 `@Disabled` 어노테이션을 삭제하고 테스트를 통과시키세요.
-@Disabled("temporary")
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
