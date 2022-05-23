@@ -120,7 +120,6 @@ public class ItemRepositoryTest {
         assertThat(statistics.getSum()).isEqualTo(17);
     }
 
-    // TODO #2: test case
     @Test
     void test10() {
         itemRepository.getAllItemsWithAssociations();
