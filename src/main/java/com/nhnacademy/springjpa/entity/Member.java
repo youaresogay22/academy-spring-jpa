@@ -1,6 +1,7 @@
 package com.nhnacademy.springjpa.entity;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,8 +27,8 @@ public class Member {
     @OneToOne(mappedBy = "member")
     private Locker locker;
 
-    // TODO #2: `mappedBy`를 이용해서 연관관계의 주인 설정.
-    @OneToMany(mappedBy = "member")
+    // TODO #1: 영속성 전이 설정
+    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<MemberDetail> memberDetails;
 
 }

@@ -90,7 +90,6 @@ create table if not exists `BoardDetails` (
     primary key (`board_id`)
 );
 
-/* TODO #4: MemberDetails.member_id 를 nullable 하게 수정해야 함 */
 drop table if exists `MemberDetails`;
 
 create table if not exists `MemberDetails` (
