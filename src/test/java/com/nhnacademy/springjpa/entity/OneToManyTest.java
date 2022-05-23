@@ -14,7 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #3: test case
+// TODO #3: test case 수정
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -28,10 +28,17 @@ public class OneToManyTest {
 
     @Test
     void test() {
+        Member member = new Member();
+        member.setId("nhn");
+        member.setUserName("academy");
+
+        entityManager.persist(member);
+
         MemberDetail memberDetail1 = new MemberDetail();
         memberDetail1.setId(1L);
         memberDetail1.setType("type1");
         memberDetail1.setDescription("...");
+        memberDetail1.setMember(member);
 
         entityManager.persist(memberDetail1);
 
@@ -39,6 +46,7 @@ public class OneToManyTest {
         memberDetail2.setId(2L);
         memberDetail2.setType("type2");
         memberDetail2.setDescription("설명 설명");
+        memberDetail2.setMember(member);
 
         entityManager.persist(memberDetail2);
 
@@ -46,12 +54,7 @@ public class OneToManyTest {
         memberDetails.add(memberDetail1);
         memberDetails.add(memberDetail2);
 
-        Member member = new Member();
-        member.setId("nhn");
-        member.setUserName("academy");
         member.setMemberDetails(memberDetails);
-
-        entityManager.persist(member);
 
         entityManager.flush();
     }
