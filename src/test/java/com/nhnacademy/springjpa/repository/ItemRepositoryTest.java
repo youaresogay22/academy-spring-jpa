@@ -72,7 +72,6 @@ public class ItemRepositoryTest {
         assertThat(item2.getItemName()).isEqualTo("samsung");
     }
 
-    // TODO #2: test case
     @Test
     void test4() {
         List<Item> items = itemRepository.findByOrderItems_QuantityGreaterThan(4);
