@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
-// TODO #1
 @EnableSpringDataWebSupport
 @Configuration
 @ComponentScan(basePackageClasses = ControllerBase.class)

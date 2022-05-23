@@ -6,6 +6,8 @@ import com.nhnacademy.springjpa.entity.Item;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -43,7 +45,9 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findByOrderItems_Order_OrderDateAfter(Date orderDate);
 
-    // TODO #3: DTO를 반환하는 repository method
     ItemDto findByItemId(Long itemId);
+
+    // TODO #2: `Pageable` 요청을 받아서 `Page` 객체로 응답하는 pagination 구현 repository method.
+    Page<ItemDto> getAllBy(Pageable pageable);
 
 }
