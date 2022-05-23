@@ -18,7 +18,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #3: Repository를 이용해서 test case 수정
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
