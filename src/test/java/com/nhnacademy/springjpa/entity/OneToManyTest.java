@@ -2,6 +2,8 @@ package com.nhnacademy.springjpa.entity;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+// TODO #3: test case
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -19,22 +22,16 @@ import org.springframework.transaction.annotation.Transactional;
     @ContextConfiguration(classes = RootConfig.class),
     @ContextConfiguration(classes = WebConfig.class)
 })
-public class ManyToOneTest {
+public class OneToManyTest {
     @PersistenceContext
     EntityManager entityManager;
 
-    // TODO #2: 영속성 전이를 이용해서 저장하도록 수정
     @Test
     void test() {
-        Member member = new Member();
-        member.setId("nhn");
-        member.setUserName("academy");
-
         MemberDetail memberDetail1 = new MemberDetail();
         memberDetail1.setId(1L);
         memberDetail1.setType("type1");
         memberDetail1.setDescription("...");
-        memberDetail1.setMember(member);
 
         entityManager.persist(memberDetail1);
 
@@ -42,10 +39,21 @@ public class ManyToOneTest {
         memberDetail2.setId(2L);
         memberDetail2.setType("type2");
         memberDetail2.setDescription("설명 설명");
-        memberDetail2.setMember(member);
 
         entityManager.persist(memberDetail2);
 
+        List<MemberDetail> memberDetails = new ArrayList<>();
+        memberDetails.add(memberDetail1);
+        memberDetails.add(memberDetail2);
+
+        Member member = new Member();
+        member.setId("nhn");
+        member.setUserName("academy");
+        member.setMemberDetails(memberDetails);
+
+        entityManager.persist(member);
+
         entityManager.flush();
     }
+
 }
