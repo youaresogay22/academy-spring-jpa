@@ -3,6 +3,7 @@ package com.nhnacademy.springjpa.repository;
 import com.nhnacademy.springjpa.annotation.Question;
 import com.nhnacademy.springjpa.entity.Item;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -27,17 +28,19 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Question
     List<Item> findByPriceIn(Collection<Long> prices);
 
-    // TODO #1: `@Query`
     @Query("select i from Item i where i.price > ?1")
     List<Item> getItemsHavingPriceAtLeast(long price);
 
-    // TODO #2: `@Query` with native query
     @Query(value = "select * from Items where price > ?1", nativeQuery = true)
     List<Item> getItemsHavingPriceAtLeast2(long price);
 
-    // TODO #3: `@Modifying`
     @Modifying
     @Query("update Item i set i.itemName = :itemName where i.itemId = :itemId")
     int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);
+
+    // TODO #1: 메서드 이름 규칙에서 연관관계 Entity를 이용한 JOIN 쿼리 실행
+    List<Item> findByOrderItems_QuantityGreaterThan(Integer quantity);
+
+    List<Item> findByOrderItems_Order_OrderDateAfter(Date orderDate);
 
 }

@@ -5,6 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Item;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,7 +45,7 @@ public class ItemRepositoryTest {
         itemRepository.flush();
     }
 
-    // TODO #4: test cases
+
     @Test
     void test2() {
         List<Item> items1 = itemRepository.getItemsHavingPriceAtLeast(250L);
@@ -66,6 +70,21 @@ public class ItemRepositoryTest {
 
         item2 = itemRepository.findById(1L).get();
         assertThat(item2.getItemName()).isEqualTo("samsung");
+    }
+
+    // TODO #2: test case
+    @Test
+    void test4() {
+        List<Item> items = itemRepository.findByOrderItems_QuantityGreaterThan(4);
+        assertThat(items).hasSize(1);
+    }
+
+    @Test
+    void test5() {
+        Date date = Date.from(LocalDateTime.of(2018, 8, 23, 10, 30)
+            .toInstant(ZoneOffset.of("+09:00")));
+        List<Item> items = itemRepository.findByOrderItems_Order_OrderDateAfter(date);
+        assertThat(items).hasSize(6);
     }
 
 }
