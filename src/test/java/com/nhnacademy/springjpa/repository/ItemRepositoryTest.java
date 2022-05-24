@@ -99,19 +99,16 @@ public class ItemRepositoryTest {
         assertThat(items).hasSize(6);
     }
 
-    // TODO #1: 단일 Entity 조회 시
     @Test
     void test7() {
         itemRepository.findById(1L);
     }
 
-    // TODO #2: 여러 개의 Entity 조회 시
     @Test
     void test8() {
         itemRepository.findAll();
     }
 
-    // TODO #3: 여러 개의 Entity 조회 + 객체 그래프 탐색
     @Test
     void test9() {
         IntSummaryStatistics statistics = itemRepository.findAll()
@@ -121,6 +118,12 @@ public class ItemRepositoryTest {
             .collect(Collectors.summarizingInt(OrderItem::getQuantity));
 
         assertThat(statistics.getSum()).isEqualTo(17);
+    }
+
+    // TODO #2: test case
+    @Test
+    void test10() {
+        itemRepository.getAllItemsWithAssociations();
     }
 
 }

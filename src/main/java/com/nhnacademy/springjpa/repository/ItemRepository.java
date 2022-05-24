@@ -49,4 +49,11 @@ public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositor
 
     Page<ItemDto> getAllBy(Pageable pageable);
 
+    // TODO #1: JPQL `join fetch`
+    @Query("select i "
+        + "from Item i "
+        + "left outer join fetch i.orderItems oi "
+        + "inner join fetch oi.order o")
+    List<Item> getAllItemsWithAssociations();
+
 }
