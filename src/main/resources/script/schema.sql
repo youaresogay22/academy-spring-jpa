@@ -100,3 +100,18 @@ create table if not exists `MemberDetails` (
 
     primary key (`member_detail_id`)
 );
+
+create table if not exists `Comments` (
+    `comment_id` bigint not null auto_increment,
+    `content` varchar(255),
+
+    primary key (`comment_id`)
+);
+
+create table if not exists `CommentDetails` (
+    `comment_detail_id` bigint not null auto_increment,
+    `comment_id` bigint null,
+    `description` varchar(255),
+
+    primary key (`comment_detail_id`)
+);

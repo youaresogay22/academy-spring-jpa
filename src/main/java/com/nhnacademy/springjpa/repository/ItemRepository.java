@@ -38,7 +38,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("update Item i set i.itemName = :itemName where i.itemId = :itemId")
     int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);
 
-    // TODO #1: 메서드 이름 규칙에서 연관관계 Entity를 이용한 JOIN 쿼리 실행
     List<Item> findByOrderItems_QuantityGreaterThan(Integer quantity);
 
     List<Item> findByOrderItems_Order_OrderDateAfter(Date orderDate);
