@@ -13,7 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 
     List<MemberDto> findByUserName(String userName);
 
-    // TODO #2: Pageable을 인자로 받아 DTO Projection 결과를 Page 객체로 반환하는 repository method 선언.
     Page<MemberNameOnly> getAllBy(Pageable pageable);
 
 }
