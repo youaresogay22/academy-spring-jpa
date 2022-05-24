@@ -86,7 +86,6 @@ public class ItemRepositoryTest {
         assertThat(items).hasSize(6);
     }
 
-    // TODO #4: test case
     @Test
     void test6() {
         List<Item> items = itemRepository.getItemsAfterOrderDate(
