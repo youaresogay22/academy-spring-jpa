@@ -47,7 +47,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     ItemDto findByItemId(Long itemId);
 
-    // TODO #2: `Pageable` 요청을 받아서 `Page` 객체로 응답하는 pagination 구현 repository method.
     Page<ItemDto> getAllBy(Pageable pageable);
 
 }
