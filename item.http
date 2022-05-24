@@ -1,5 +1,3 @@
-// TODO #6: test REST APIs
-
 GET /v1/items/1
 Content-Type: application/json
 Host: localhost:8080
@@ -7,5 +5,19 @@ Host: localhost:8080
 ###
 
 GET /v2/items/1
+Content-Type: application/json
+Host: localhost:8080
+
+###
+
+// TODO #3: pagination 요청 test
+
+GET /items?page=0&size=5
+Content-Type: application/json
+Host: localhost:8080
+
+###
+
+GET /items?page=1&size=5
 Content-Type: application/json
 Host: localhost:8080

@@ -115,3 +115,24 @@ create table if not exists `CommentDetails` (
 
     primary key (`comment_detail_id`)
 );
+
+/* TODO #4: `Members` 테이블과 `MemberDetails` 테이블에 대한 초기 데이터 적재 */
+merge into `Members` key (`member_id`) values ( 'dongmyo', 'Shin Dongmin' );
+merge into `Members` key (`member_id`) values ( 'manty', 'Jung jibum' );
+merge into `Members` key (`member_id`) values ( 'jordan', 'Jung Myoungju' );
+merge into `Members` key (`member_id`) values ( 'comtin', 'Lee Kyounghwan' );
+merge into `Members` key (`member_id`) values ( 'yoda', 'Baek Changyeol' );
+merge into `Members` key (`member_id`) values ( 'marco', 'Go Back 10000' );
+
+merge into `MemberDetails` key (`member_detail_id`) values ( 11, 'dongmyo', 'favorite', 'soccer' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 12, 'dongmyo', 'hobby', 'coding' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 13, 'manty', 'favorite', 'scouba' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 14, 'manty', 'hobby', 'netflix' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 15, 'jordan', 'favorite', 'book' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 16, 'jordan', 'hobby', 'date' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 17, 'comtin', 'favorite', 'document' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 18, 'comtin', 'hobby', 'sleeping' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 19, 'yoda', 'favorite', 'deploy' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 20, 'yoda', 'hobby', 'order' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 21, 'marco', 'favorite', 'homework' );
+merge into `MemberDetails` key (`member_detail_id`) values ( 22, 'marco', 'hobby', 'sampling' );
