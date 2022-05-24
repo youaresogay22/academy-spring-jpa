@@ -13,7 +13,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+// TODO #3: 기본 Repository interface가 Custom Repository interface를 상속받도록 변경
+public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositoryCustom {
     // select * from Items where item_name like '{itemName}'
     List<Item> findByItemNameLike(String itemName);
 

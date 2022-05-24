@@ -132,7 +132,6 @@
             <version>3.21.0</version>
         </dependency>
 
-        <!-- TODO : #1 querydsl -->
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
@@ -161,7 +160,6 @@
                 <version>2.22.2</version>
             </plugin>
 
-            <!-- TODO : #2 querydsl annotation processor plugin -->
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
