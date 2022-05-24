@@ -5,11 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Item;
+import com.nhnacademy.springjpa.entity.Order;
+import com.nhnacademy.springjpa.entity.OrderItem;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
@@ -92,6 +97,30 @@ public class ItemRepositoryTest {
             LocalDateTime.of(2018, 8, 23, 10, 30, 0));
 
         assertThat(items).hasSize(6);
+    }
+
+    // TODO #1: 단일 Entity 조회 시
+    @Test
+    void test7() {
+        itemRepository.findById(1L);
+    }
+
+    // TODO #2: 여러 개의 Entity 조회 시
+    @Test
+    void test8() {
+        itemRepository.findAll();
+    }
+
+    // TODO #3: 여러 개의 Entity 조회 + 객체 그래프 탐색
+    @Test
+    void test9() {
+        IntSummaryStatistics statistics = itemRepository.findAll()
+            .stream()
+            .map(Item::getOrderItems)
+            .flatMap(Collection::stream)
+            .collect(Collectors.summarizingInt(OrderItem::getQuantity));
+
+        assertThat(statistics.getSum()).isEqualTo(17);
     }
 
 }
