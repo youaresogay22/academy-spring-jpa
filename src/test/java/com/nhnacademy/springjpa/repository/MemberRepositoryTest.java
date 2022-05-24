@@ -9,7 +9,9 @@ import com.nhnacademy.springjpa.domain.MemberNameOnly;
 import com.nhnacademy.springjpa.entity.Member;
 import com.nhnacademy.springjpa.entity.MemberDetail;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +74,17 @@ public class MemberRepositoryTest {
         List<MemberDto> dtos = memberRepository.findByUserName("nhn");
         assertThat(dtos).hasSize(1);
         assertThat(dtos.get(0).getMemberDetails()).hasSize(2);
+    }
+
+    // TODO #2: test case
+    @Test
+    void test3() {
+        memberRepository.getMembersWithAssociation()
+            .stream()
+            .map(Member::getMemberDetails)
+            .flatMap(Collection::stream)
+            .map(MemberDetail::getType)
+            .collect(Collectors.toList());
     }
 
 }
