@@ -5,25 +5,39 @@ import com.nhnacademy.springjpa.entity.Item;
 import java.util.Collection;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
     // select * from Items where item_name like '{itemName}'
     List<Item> findByItemNameLike(String itemName);
 
     // select item_id from Items
-    // where item_name = '{itemName}'
-    // and price = {price} limit 1
+    // where item_name = '{itemName}'
+    // and price = {price} limit 1
     boolean existsByItemNameAndPrice(String itemName, Long price);
 
-    // select count(*) from Items where item_name like '%{itemName}%'
+    // select count(*) from Items where item_name like '%{itemName}%'
     int countByItemNameLike(String itemName);
 
-    // delete from Items where price between {price1} and {price2}
+    // delete from Items where price between {price1} and {price2}
     void deleteByPriceBetween(long price1, long price2);
 
-    // TODO : #1 실습 - 다음 메서드의 이름을 아래 쿼리 결과가 나오도록 이름 규칙에 맞춰 수정하세요.
-    //        select * from Items where price in (...)
     @Question
-    List<Item> changeThisMethodName(Collection<Long> prices);
+    List<Item> findByPriceIn(Collection<Long> prices);
+
+    // TODO #1: `@Query`
+    @Query("select i from Item i where i.price > ?1")
+    List<Item> getItemsHavingPriceAtLeast(long price);
+
+    // TODO #2: `@Query` with native query
+    @Query(value = "select * from Items where price > ?1", nativeQuery = true)
+    List<Item> getItemsHavingPriceAtLeast2(long price);
+
+    // TODO #3: `@Modifying`
+    @Modifying
+    @Query("update Item i set i.itemName = :itemName where i.itemId = :itemId")
+    int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);
 
 }

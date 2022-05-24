@@ -30,7 +30,6 @@ public class ItemRepositoryTest2 {
     @Autowired
     private ItemRepository itemRepository;
 
-    // TODO : #2 ItemRepository 인터페이스의 @Question 어노테이션이 붙은 메서드의 이름을 수정해서 아래 테스트를 통과하세요.
     @Test
     void test() {
         Class<?> clazz = Arrays.stream(itemRepository.getClass().getInterfaces())
