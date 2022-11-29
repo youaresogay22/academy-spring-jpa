@@ -100,3 +100,40 @@ create table if not exists `MemberDetails` (
 
     primary key (`member_detail_id`)
 );
+
+/* TODO #1: 테이블 생성 쿼리 */
+create table if not exists `Students` (
+  `student_id` bigint not null,
+  `student_name` varchar(255) not null,
+
+  primary key (`student_id`)
+);
+
+create table if not exists `Classes` (
+  `class_id` bigint not null,
+  `class_name` varchar(255) not null,
+
+  primary key (`class_id`)
+);
+
+create table if not exists `Enrollments` (
+  `student_id` bigint not null,
+  `class_id` bigint not null,
+  `enrolled_at` datetime,
+
+  primary key (`student_id`, `class_id`)
+);
+
+merge into `Students` key (`student_id`) values ( 1, 'chosun' );
+merge into `Students` key (`student_id`) values ( 2, 'nhn' );
+
+merge into `Classes` key (`class_id`) values ( 100, 'servlet' );
+merge into `Classes` key (`class_id`) values ( 200, 'jpa' );
+merge into `Classes` key (`class_id`) values ( 300, 'auth' );
+
+merge into `Enrollments` key (`student_id`,`class_id`) values ( 1, 100, now() );
+merge into `Enrollments` key (`student_id`,`class_id`) values ( 1, 200, now() );
+
+merge into `Enrollments` key (`student_id`,`class_id`) values ( 2, 100, now() );
+merge into `Enrollments` key (`student_id`,`class_id`) values ( 2, 200, now() );
+merge into `Enrollments` key (`student_id`,`class_id`) values ( 2, 300, now() );
