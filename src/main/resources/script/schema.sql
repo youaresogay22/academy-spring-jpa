@@ -101,7 +101,6 @@ create table if not exists `MemberDetails` (
     primary key (`member_detail_id`)
 );
 
-/* TODO #1: 테이블 생성 쿼리 */
 create table if not exists `Students` (
   `student_id` bigint not null,
   `student_name` varchar(255) not null,

@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// TODO #3: `Classes` 테이블과 맵핑될 `Clazz` Entity 클래스
 @NoArgsConstructor
 @Getter
 @Setter

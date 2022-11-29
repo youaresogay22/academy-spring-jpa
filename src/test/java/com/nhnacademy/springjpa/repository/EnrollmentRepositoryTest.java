@@ -6,7 +6,6 @@ import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Enrollment;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// TODO #8: 아래 `@Disabled` 어노테이션을 삭제하고 테스트를 통과시키세요.
-@Disabled("temporary")
+// TODO #5: `@Disabled` 어노테이션 삭제하고 테스트를 실행하면 통과됨
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -31,10 +29,10 @@ public class EnrollmentRepositoryTest {
 
     @Test
     public void test() {
-        List<Enrollment> enrollments1 = enrollmentRepository.changeThisMethodName1("nhn");
+        List<Enrollment> enrollments1 = enrollmentRepository.findByStudent_Name("nhn");
         assertThat(enrollments1).hasSize(3);
 
-        List<Enrollment> enrollments2 = enrollmentRepository.changeThisMethodName2("jpa");
+        List<Enrollment> enrollments2 = enrollmentRepository.findByClazz_Name("jpa");
         assertThat(enrollments2).hasSize(2);
     }
     
