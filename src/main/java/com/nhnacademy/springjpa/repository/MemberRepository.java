@@ -7,17 +7,14 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-public interface MemberRepository extends JpaRepository<Member, String> {
+// TODO #1
+public interface MemberRepository extends JpaRepository<Member, String>, MemberRepositoryCustom {
     MemberNameOnly queryById(String id);
 
     List<MemberDto> findByUserName(String userName);
 
     Page<MemberNameOnly> getAllBy(Pageable pageable);
 
-    // TODO : use join fetch
-    @Query("select m from Member m")
-    List<Member> getMembersWithAssociation();
 
 }

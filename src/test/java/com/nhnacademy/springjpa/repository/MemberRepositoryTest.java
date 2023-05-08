@@ -76,7 +76,7 @@ public class MemberRepositoryTest {
         assertThat(dtos.get(0).getMemberDetails()).hasSize(2);
     }
 
-    // TODO #2: test case
+    // TODO #4: test case
     @Test
     void test3() {
         memberRepository.getMembersWithAssociation()
