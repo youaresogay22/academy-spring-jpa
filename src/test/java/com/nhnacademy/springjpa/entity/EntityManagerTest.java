@@ -25,7 +25,6 @@ public class EntityManagerTest {
     @PersistenceContext
     EntityManager entityManager;
 
-    // TODO #3: 다음 테스트를 실행하면 수행될 쿼리는?
     @Test
     void test1() {
         User user1 = new User();
@@ -38,7 +37,6 @@ public class EntityManagerTest {
         assertThat(user2).isEqualTo(user1);
     }
 
-    // TODO #4: 다음 테스트를 실행하면 수행될 쿼리는?
     @Test
     void test2() {
         User user1 = new User();
@@ -52,7 +50,6 @@ public class EntityManagerTest {
         assertThat(user2).isEqualTo(user1);
     }
 
-    // TODO #5: 다음 테스트를 실행하면 수행될 쿼리는?
     @Test
     void test3() {
         User user1 = new User();
@@ -68,7 +65,6 @@ public class EntityManagerTest {
         entityManager.flush();
     }
 
-    // TODO #6: 다음 테스트를 실행하면 수행될 쿼리는?
     @Test
     void test4() {
         User user1 = entityManager.find(User.class, "admin");
