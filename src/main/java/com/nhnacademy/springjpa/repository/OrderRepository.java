@@ -10,7 +10,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findByOrderDateAfter(Date orderDate);
 
     // TODO #1: `@Query`를 이용해서 위의 `findByOrderDateAfter()` 메서드와 동일한 기능을 하도록 JPQL을 작성하세요.
-    @Query("select o from Order o")
+    @Query("select o from Order o where o.orderDate > ?1")
     List<Order> getOrdersHavingOrderDateAfter(Date orderDate);
 
 }
