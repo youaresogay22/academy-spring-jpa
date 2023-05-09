@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,6 +19,15 @@ import lombok.Setter;
 import org.springframework.data.domain.Persistable;
 
 // TODO #1 : `@NamedEntityGraph` 설정하시오
+@NamedEntityGraphs({
+    @NamedEntityGraph(name = "memberWithLocker", attributeNodes = {
+        @NamedAttributeNode("locker")
+    }),
+    @NamedEntityGraph(name = "memberWithLockerAndMemberDetails", attributeNodes = {
+        @NamedAttributeNode("locker"),
+        @NamedAttributeNode("memberDetails")
+    })
+})
 @Getter
 @Setter
 @Entity
