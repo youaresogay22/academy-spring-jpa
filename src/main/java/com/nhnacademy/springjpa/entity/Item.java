@@ -4,23 +4,27 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedSubgraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/*
- *
- * create table if not exists `Items` (
- *   `item_id` bigint not null auto_increment,
- *   `item_name` varchar(40) not null,
- *   `price` bigint not null,
- *
- *   primary key(`item_id`)
- * );
- *
- */
+// TODO #1: `@NamedEntityGraph` 선언
+@NamedEntityGraphs({
+    @NamedEntityGraph(name = "itemWithOrderItems", attributeNodes = {
+        @NamedAttributeNode("orderItems")
+    }),
+    @NamedEntityGraph(name = "itemWithOrderItemsAndOrder", attributeNodes = {
+        @NamedAttributeNode(value = "orderItems", subgraph = "orderItems")
+    }, subgraphs = @NamedSubgraph(name = "orderItems", attributeNodes = {
+        @NamedAttributeNode("order")
+    }))
+})
 @NoArgsConstructor
 @Getter
 @Setter

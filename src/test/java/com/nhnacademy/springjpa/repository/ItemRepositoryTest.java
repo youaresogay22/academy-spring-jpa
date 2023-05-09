@@ -5,11 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Item;
-import com.nhnacademy.springjpa.entity.Order;
 import com.nhnacademy.springjpa.entity.OrderItem;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.IntSummaryStatistics;
@@ -124,5 +122,17 @@ public class ItemRepositoryTest {
     void test10() {
         itemRepository.getAllItemsWithAssociations();
     }
+
+    // TODO #3: repository method 호출
+    @Test
+    void test11() {
+        itemRepository.readAllBy();
+    }
+
+    @Test
+    void test12() {
+        itemRepository.queryAllBy();
+    }
+
 
 }

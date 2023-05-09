@@ -7,7 +7,6 @@ import com.nhnacademy.springjpa.entity.QMemberDetail;
 import java.util.List;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-// TODO #3
 public class MemberRepositoryImpl extends QuerydslRepositorySupport implements MemberRepositoryCustom {
     public MemberRepositoryImpl() {
         super(Member.class);

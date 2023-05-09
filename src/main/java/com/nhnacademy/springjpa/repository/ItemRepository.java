@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -54,5 +55,12 @@ public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositor
         + "left outer join fetch i.orderItems oi "
         + "inner join fetch oi.order o")
     List<Item> getAllItemsWithAssociations();
+
+    // TODO #2: `@EntityGraph`를 이용해서 적용할 entity graph 지정
+    @EntityGraph("itemWithOrderItems")
+    List<Item> readAllBy();
+
+    @EntityGraph("itemWithOrderItemsAndOrder")
+    List<Item> queryAllBy();
 
 }
