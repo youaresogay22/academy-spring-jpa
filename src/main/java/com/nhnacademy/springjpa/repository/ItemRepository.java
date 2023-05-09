@@ -1,6 +1,7 @@
 package com.nhnacademy.springjpa.repository;
 
 import com.nhnacademy.springjpa.annotation.Question;
+import com.nhnacademy.springjpa.domain.ItemDto;
 import com.nhnacademy.springjpa.entity.Item;
 import java.util.Collection;
 import java.util.Date;
@@ -41,5 +42,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findByOrderItems_QuantityGreaterThan(Integer quantity);
 
     List<Item> findByOrderItems_Order_OrderDateAfter(Date orderDate);
+
+    // TODO #1: `ItemDto`를 이용하여 `Item` 엔티티 및 연관관계에 있는 엔티티들을 조회하는 메소드.
+    List<ItemDto> findAllBy();
 
 }

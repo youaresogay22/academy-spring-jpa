@@ -30,7 +30,6 @@ public class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    // TODO #3: test case
     @Test
     void test() {
         Member member = new Member();
@@ -43,7 +42,6 @@ public class MemberRepositoryTest {
         assertThat(memberNameOnly.getUserName()).isEqualTo("nhn");
     }
 
-    // TODO #6: test case
     @Test
     void test2() {
         Member member = new Member();
