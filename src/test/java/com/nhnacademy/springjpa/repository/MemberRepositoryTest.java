@@ -86,4 +86,10 @@ public class MemberRepositoryTest {
             .collect(Collectors.toList());
     }
 
+    // TODO #3: test case를 실행했을 때 N + 1 문제가 발생하지 않도록 하세요.
+    @Test
+    void test4() {
+        memberRepository.readAllBy();
+    }
+
 }

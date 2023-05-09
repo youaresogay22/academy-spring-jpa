@@ -56,7 +56,6 @@ public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositor
         + "inner join fetch oi.order o")
     List<Item> getAllItemsWithAssociations();
 
-    // TODO #2: `@EntityGraph`를 이용해서 적용할 entity graph 지정
     @EntityGraph("itemWithOrderItems")
     List<Item> readAllBy();
 

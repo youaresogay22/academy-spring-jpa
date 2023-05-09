@@ -123,7 +123,6 @@ public class ItemRepositoryTest {
         itemRepository.getAllItemsWithAssociations();
     }
 
-    // TODO #3: repository method 호출
     @Test
     void test11() {
         itemRepository.readAllBy();

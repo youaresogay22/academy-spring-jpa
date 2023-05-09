@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface MemberRepository extends JpaRepository<Member, String>, MemberRepositoryCustom {
     MemberNameOnly queryById(String id);
@@ -15,5 +16,8 @@ public interface MemberRepository extends JpaRepository<Member, String>, MemberR
 
     Page<MemberNameOnly> getAllBy(Pageable pageable);
 
+    // TODO #2: `@EntityGraph`를 이용해서 적용할 entity graph 지정
+    @Query("select m from Member m")
+    List<Member> readAllBy();
 
 }

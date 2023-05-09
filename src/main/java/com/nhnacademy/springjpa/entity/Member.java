@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.domain.Persistable;
 
+// TODO #1 : `@NamedEntityGraph` 설정하시오
 @Getter
 @Setter
 @Entity

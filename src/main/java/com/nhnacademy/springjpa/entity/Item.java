@@ -14,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// TODO #1: `@NamedEntityGraph` 선언
 @NamedEntityGraphs({
     @NamedEntityGraph(name = "itemWithOrderItems", attributeNodes = {
         @NamedAttributeNode("orderItems")
