@@ -27,15 +27,12 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Question
     List<Item> findByPriceIn(Collection<Long> prices);
 
-    // TODO #1: `@Query`
     @Query("select i from Item i where i.price > ?1")
     List<Item> getItemsHavingPriceAtLeast(long price);
 
-    // TODO #2: `@Query` with native query
     @Query(value = "select * from Items where price > ?1", nativeQuery = true)
     List<Item> getItemsHavingPriceAtLeast2(long price);
 
-    // TODO #3: `@Modifying`
     @Modifying
     @Query("update Item i set i.itemName = :itemName where i.itemId = :itemId")
     int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);

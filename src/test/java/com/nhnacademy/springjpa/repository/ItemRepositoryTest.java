@@ -41,7 +41,6 @@ public class ItemRepositoryTest {
         itemRepository.flush();
     }
 
-    // TODO #4: test cases
     @Test
     void test2() {
         List<Item> items1 = itemRepository.getItemsHavingPriceAtLeast(250L);
