@@ -50,20 +50,62 @@ dataSource.setMaxIdle(10);
 === JPA
 * Java Persistence API: 영속성 API 라는 뜻
 ** 자바의 ORM 기술표준
+
 * 인터페이스이며, 실제 구현체는 Hibernate(표준) 사용
+
 * SQL-based development: SQL을 직접 사용하여 개발하면, sql 위주로 개발자의 관심이 쏠리게 됨
 ** 자바 코드에 변경이 있더라도 SQL을 알아야 함
 ** 변경의 폭이 좁아지는 부정적 효과를 초래
+
 * 컬럼 추가의 경우, 직접 SQL을 사용할 땐 CRUD 쿼리를 모두 수정해줘야 했다(실습 참고)
 ** JPA 이용 시 JPA 모델(엔티티)을 수정해주면 프레임워크에서 알아서 해준다.
+
 * 데이터 접근에 대한 추상화가 가능하다.
 ** 데이터베이스 제조사에 대한 독립성을 획득한다.
+
 * spring data
 ** 데이터 저장소에 대한 접근을 추상화하기 위한 Spring 프로젝트
 ** spring data JPA, spring data JDBC, spring data Redis, spring data MongoDB등...의 하위 프로젝트가 많다.
+
 * 결국 우리가 실제로 배울 것은 JPA >를 추상화한 Hibernate > 를 추상화한 spring data JPA
 
 
-=== 실습: spring data JPA: branch main-revised
+=== Transaction
+* transaction: (정의)하나의 논리적 기능을 수행하기 위한 작업의 단위 또는 한꺼번에 모두 수행되어야 할 일련의 연산
+** (예시) 은행-송금: A에서 B로 송금하는 경우, A읽음-A차감과 B읽음-B합산이 하나의 트랜잭션이다.
+
+* ACID 원칙을 지켜야 함.
+* Atomicity(원자성)
+** 트랜잭션의 수행결과는 데이터베이스에 전부 반영되거나, 전부 반영되지 않아야 한다.(All or Nothing)
+** commit과 rollback 의 명령어를 통해 이를 구현한다.
+
+* Consistency(일관성)
+** 트랜잭션 수행 후 데이터 모델의 모든 제약조건을 만족해야 한다.
+** 제약조건: type, nullable, foreign key 등을 말함.
+
+* Isolation(고립성)
+** 트랜잭션 수행 시 다른 트랜잭션이 영향을 미치지 않아야 한다.
+** 보통 멀티쓰레드 환경 하에서 발생하는 문제이다.
+
+* Durability(영속성)
+** 트랜잭션의 성공결과는 장애 발생 후에도 변함없이 보관되어야 합니다.
+** 트랜잭션이 종료되면 무조건 저장될 것.
+
+* PlatformTransactionManager
+** Spring 에서 트랜잭션 추상화는 모두 이 인터페이스를 구현하여 작동함
+
+* @Transactional
+* 사용하기 위해 datasourcetransactionmanager 객체를 bean으로 등록해 줘야 함
+** 스프링 트랜잭션은 AOP로 동작한다
+** 즉, 트랜잭션이 정상적으로 동작하기 위해서
+** 대상 메소드는 public 이여야 함
+** 대상이 spring bean 이여야 함
+** bean이지만 보통은 @service 에 트랜잭션을 붙이게 된다, 서비스 빈에서 선언한 메소드들이 보통 트랜잭셔널 하게 동작하기를 바라기 때문
+** 특별한 이유가 있는 것은 아니고 경향성이다
+
+
+
+
+
 
 
