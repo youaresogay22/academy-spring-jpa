@@ -10,5 +10,6 @@ public class UserModifyRequest {
     @Length(min = 3, max = 20)
     @NotBlank
     private String password;
+    private int age;
 
 }
