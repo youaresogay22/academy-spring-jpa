@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
     PRIMARY KEY(`user_id`)
 );
 
-MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'admin', '12345' );
-MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'dongmyo', '67890' );
+-- MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'admin', '12345' );
+-- MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'dongmyo', '67890' );
 
 create table if not exists `Items` (
     `item_id` bigint not null auto_increment,
