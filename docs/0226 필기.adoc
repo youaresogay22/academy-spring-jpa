@@ -28,7 +28,7 @@
 === JdbcTemplate by Spring Framework
 * 예외, 트랜잭션, connection/statement/resultset 등의 자원 close 처리를 대신해줌.
 
-=== 실습:
+=== 실습: age 필드 추가하기
 
 ----
 dataSource.setInitialSize(10);
@@ -37,4 +37,33 @@ dataSource.setMinIdle(10);
 dataSource.setMaxIdle(10);
 ----
 일반적으로 이 4개 세팅을 동일하게 사용. 실제 구동 환경에서 커넥션이 새로 생성되는 것을 방지하기 위함
+
+* 결과로부터 배우기: 이것저것 고칠 곳이 많다.
+** SQL문, repository 내부 각종 CRUD 메서드,상속관계, 객체 구조 등등.
+
+=== ORM: Object-Relational Mapping
+
+* 위 실습에서 느낄 수 있었던 문제들을 해결하기 위해 만든 layer.
+* Table Framework
+* 계층 프레임워크이므로 아래 단계인 데이터베이스 벤더에 따른 SQL문의 종속성을 낮춘다.(=호환성이 향상된다.)
+
+=== JPA
+* Java Persistence API: 영속성 API 라는 뜻
+** 자바의 ORM 기술표준
+* 인터페이스이며, 실제 구현체는 Hibernate(표준) 사용
+* SQL-based development: SQL을 직접 사용하여 개발하면, sql 위주로 개발자의 관심이 쏠리게 됨
+** 자바 코드에 변경이 있더라도 SQL을 알아야 함
+** 변경의 폭이 좁아지는 부정적 효과를 초래
+* 컬럼 추가의 경우, 직접 SQL을 사용할 땐 CRUD 쿼리를 모두 수정해줘야 했다(실습 참고)
+** JPA 이용 시 JPA 모델(엔티티)을 수정해주면 프레임워크에서 알아서 해준다.
+* 데이터 접근에 대한 추상화가 가능하다.
+** 데이터베이스 제조사에 대한 독립성을 획득한다.
+* spring data
+** 데이터 저장소에 대한 접근을 추상화하기 위한 Spring 프로젝트
+** spring data JPA, spring data JDBC, spring data Redis, spring data MongoDB등...의 하위 프로젝트가 많다.
+* 결국 우리가 실제로 배울 것은 JPA >를 추상화한 Hibernate > 를 추상화한 spring data JPA
+
+
+=== 실습: spring data JPA: branch main-revised
+
 
