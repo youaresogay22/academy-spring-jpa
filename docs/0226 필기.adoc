@@ -2,13 +2,39 @@
 
 == 들어가기 전
 
+* 백엔드 애플리케이션에서 가장 중요한 것: 데이터를 잘 저장하고, 잘 불러오는 것.
 * 영속성: 데이터를 영원히 저장하는 방식.
 ** Spring에서는 R-db(관계형 데이터베이스)를 가장 많이 사용함.
 
-== 관계형 데이터베이스와 ORM
+== 잠깐! 상식: 쓰레드
+* !!프로세스 내부!!의 실행 단위
+* 서로 데이터 공유 가능
+** 프로세스 간 통신은 IPC 필요
 
-* transaction: 데이터베이스의 일관성을 유지하기 위해 쿼리문을 단위로 처리하는, 데이터베이스에서 제공하는 기능이다.
-* SQL: 쿼리 랭귀지.
+== 관계형 데이터베이스와 ORM
+* orm: object-relation mapping
+
+=== transaction: 데이터베이스의 일관성을 유지하기 위해 쿼리문을 단위로 처리하는, 데이터베이스에서 제공하는 기능이다.
+
+=== SQL: 쿼리 랭귀지.
 * 관계형 데이터베이스(관계-논리 모델)와 java(객체지향형 언어) 사이에는 논리적 불일치가 있다.
 ** 계승, 상속 등의 개념을 관계-논리 모델에서 표현하기 곤란
 ** 따라서 JPA 사용
+
+=== connection pool
+* 커넥션 생성 시 드는 시스템 자원을 절약하기 위함
+* 추가로 커넥션 수를 제한하여 DB의 자원을 보호할 수 있음
+
+=== JdbcTemplate by Spring Framework
+* 예외, 트랜잭션, connection/statement/resultset 등의 자원 close 처리를 대신해줌.
+
+=== 실습:
+
+----
+dataSource.setInitialSize(10);
+dataSource.setMaxTotal(10);
+dataSource.setMinIdle(10);
+dataSource.setMaxIdle(10);
+----
+일반적으로 이 4개 세팅을 동일하게 사용. 실제 구동 환경에서 커넥션이 새로 생성되는 것을 방지하기 위함
+
