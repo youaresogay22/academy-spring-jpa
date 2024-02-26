@@ -2,7 +2,7 @@ package com.nhnacademy.springjpa.entity;
 
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,8 +17,6 @@ import javax.persistence.PersistenceContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-// TODO #2: 아래 `@Disabled` 어노테이션을 삭제하고 테스트를 통과시키세요.
-@Disabled("temporary")
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -26,16 +24,20 @@ import static org.assertj.core.api.Assertions.assertThat;
         @ContextConfiguration(classes = RootConfig.class),
         @ContextConfiguration(classes = WebConfig.class)
 })
-public class OrderEntityTest {
+class OrderItemsTest {
+
     @PersistenceContext
     private EntityManager entityManager;
 
     @Test
     public void testOrderEntity() {
-        Order order1 = entityManager.find(Order.class, 1001L);
+        OrderItems.PrimaryKey pk = new OrderItems.PrimaryKey(1001L, 1);
+        OrderItems orderItems = entityManager.find(OrderItems.class, pk);
 
-        assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderId")).isEqualTo(1001L);
-        assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderDate")).isNotNull();
+        assertThat(ReflectionTestUtils.invokeGetterMethod(orderItems, "orderId")).isEqualTo(1001L);
+        assertThat(ReflectionTestUtils.invokeGetterMethod(orderItems, "lineNumber")).isEqualTo(1);
+        assertThat(ReflectionTestUtils.invokeGetterMethod(orderItems, "itemId")).isEqualTo(1L);
+        assertThat(ReflectionTestUtils.invokeGetterMethod(orderItems, "quantity")).isEqualTo(3);
     }
 
 }
