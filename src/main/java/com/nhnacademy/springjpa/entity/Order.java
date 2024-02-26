@@ -1,5 +1,13 @@
 package com.nhnacademy.springjpa.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+
 // TODO #1: `Orders` 테이블과 맵핑될 `Order` Entity 클래스를 작성하세요.
 /*
  * create table if not exists `Orders` (
@@ -10,5 +18,19 @@ package com.nhnacademy.springjpa.entity;
  * );
  *
  */
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "Orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    @NotNull
+    private long orderId;
+
+    @Column(name = "order_date")
+    @NotNull
+    private LocalDateTime orderDate;
 }
