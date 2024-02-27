@@ -6,9 +6,11 @@ import com.nhnacademy.springjpa.annotation.Question;
 import com.nhnacademy.springjpa.config.RootConfig;
 import com.nhnacademy.springjpa.config.WebConfig;
 import com.nhnacademy.springjpa.entity.Item;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WebAppConfiguration
 @Transactional
 @ContextHierarchy({
-    @ContextConfiguration(classes = RootConfig.class),
-    @ContextConfiguration(classes = WebConfig.class)
+        @ContextConfiguration(classes = RootConfig.class),
+        @ContextConfiguration(classes = WebConfig.class)
 })
 public class ItemRepositoryTest2 {
     @Autowired
@@ -34,24 +36,24 @@ public class ItemRepositoryTest2 {
     @Test
     void test() {
         Class<?> clazz = Arrays.stream(itemRepository.getClass().getInterfaces())
-            .filter(iface -> iface.isAssignableFrom(ItemRepository.class))
-            .findFirst()
-            .orElse(null);
+                .filter(iface -> iface.isAssignableFrom(ItemRepository.class))
+                .findFirst()
+                .orElse(null);
 
         assertThat(clazz).isNotNull();
 
-        Method questionedMethod = Arrays.stream(clazz.getDeclaredMethods())
-            .filter(method -> method.isAnnotationPresent(Question.class))
-            .findFirst()
-            .orElse(null);
+        Method findByPriceIn = Arrays.stream(clazz.getDeclaredMethods())
+                .filter(method -> method.isAnnotationPresent(Question.class))
+                .findFirst()
+                .orElse(null);
 
-        assertThat(questionedMethod).isNotNull();
+        assertThat(findByPriceIn).isNotNull();
 
-        List<Item> items = ReflectionTestUtils.invokeMethod(itemRepository, questionedMethod.getName(),
-            Arrays.asList(100L, 200L));
+        List<Item> items = ReflectionTestUtils.invokeMethod(itemRepository, findByPriceIn.getName(),
+                Arrays.asList(100L, 200L));
 
         assertThat(items).isNotEmpty()
-                         .hasSize(3);
+                .hasSize(3);
     }
 
 }

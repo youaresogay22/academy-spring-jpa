@@ -2,8 +2,10 @@ package com.nhnacademy.springjpa.repository;
 
 import com.nhnacademy.springjpa.annotation.Question;
 import com.nhnacademy.springjpa.entity.Item;
+
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
@@ -24,6 +26,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     // TODO : #1 실습 - 다음 메서드의 이름을 아래 쿼리 결과가 나오도록 이름 규칙에 맞춰 수정하세요.
     //        select * from Items where price in (...)
     @Question
-    List<Item> changeThisMethodName(Collection<Long> prices);
+    List<Item> findByPriceIn(Collection<Long> prices);
 
 }
