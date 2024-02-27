@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,7 +18,8 @@ import java.time.LocalDateTime;
 @Setter
 public class Customer {
     @Id
-    @Column(name = "customer_id")
+    @NotNull
+    @Column(name = "Customer_id", unique = true)
     private String customerId;
 
     @Column(name = "customer_name")

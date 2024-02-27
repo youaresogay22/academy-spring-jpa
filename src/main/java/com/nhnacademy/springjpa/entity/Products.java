@@ -4,18 +4,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "Products", schema = "nhn_academy_29")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Products {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String ProductID;
     private String ModelNumber;
     private String ModelName;
