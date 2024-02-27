@@ -1,11 +1,8 @@
 package com.nhnacademy.springjpa.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,11 +28,14 @@ public class OrderItem {
     @EmbeddedId
     private Pk pk;
 
-    @Column(name = "item_id")
+    @Column(name = "item_id", insertable = false, updatable = false)
     private Long itemId;
 
     private Integer quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     @NoArgsConstructor
     @AllArgsConstructor
