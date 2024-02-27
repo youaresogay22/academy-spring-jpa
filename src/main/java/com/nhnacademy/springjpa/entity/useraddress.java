@@ -20,6 +20,6 @@ public class useraddress {
     private String userAddress;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private users users;
 }

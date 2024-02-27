@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Orders")
@@ -17,10 +17,10 @@ public class Orders {
     private int OrderID;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private users users;
 
-    private int Quantity;
+    private LocalDateTime OrderDate;
 
-    private BigDecimal UnitCost;
+    private LocalDateTime ShipDate;
 }

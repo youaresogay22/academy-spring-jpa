@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.time.LocalDateTime;
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
@@ -31,7 +30,13 @@ class ProductsTest {
         Products product = entityManager.find(Products.class, "1");
 
         Assertions.assertNotNull(product.getProductID());
+        Assertions.assertNotNull(product.getModelNumber());
+        Assertions.assertNotNull(product.getModelName());
         Assertions.assertNotNull(product.getProductThumbnail());
+        Assertions.assertNotNull(product.getProductImage());
+        Assertions.assertNotNull(product.getUnitCost());
+        Assertions.assertInstanceOf(Integer.class, product.getUnitQuantity());
+        Assertions.assertNotNull(product.getDescription());
     }
 
 }

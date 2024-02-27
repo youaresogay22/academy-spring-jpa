@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "userpointDetail")
@@ -17,16 +19,16 @@ public class userpointDetail {
     private String userPointDetailID;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private users users;
 
     @Column(name = "userpointchange")
     private String userPointChange;
 
     @Column(name = "userpointchangeamount")
-    private String userPointChangeAmount;
+    private BigDecimal userPointChangeAmount;
 
     @Column(name = "userpointchangedate")
-    private String userPointChangeDate;
+    private LocalDateTime userPointChangeDate;
 
 }
