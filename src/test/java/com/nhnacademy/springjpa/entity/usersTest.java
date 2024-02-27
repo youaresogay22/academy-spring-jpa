@@ -22,22 +22,22 @@ import java.time.LocalDateTime;
         @ContextConfiguration(classes = RootConfig.class),
         @ContextConfiguration(classes = WebConfig.class)
 })
-class usersTest {
+class customerTest {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Test
     public void testUsersEntity() {
-        users user1 = entityManager.find(users.class, "admin");
+        Customer customer = entityManager.find(Customer.class, "admin");
 
-        Assertions.assertEquals("admin", user1.getUserId());
-        Assertions.assertEquals("관리자", user1.getUserName());
-        Assertions.assertEquals("12345", user1.getUserPassword());
-        Assertions.assertEquals("19000101", user1.getUserBirth());
-        Assertions.assertEquals("ROLE_ADMIN", user1.getUserAuth());
-        Assertions.assertEquals(1_560_000, user1.getUserPoint());
-        Assertions.assertInstanceOf(LocalDateTime.class, user1.getAtCreated());
-        Assertions.assertInstanceOf(LocalDateTime.class, user1.getLatestLoginAt());
+        Assertions.assertEquals("admin", customer.getCustomerId());
+        Assertions.assertEquals("관리자", customer.getCustomerName());
+        Assertions.assertEquals("12345", customer.getCustomerPassword());
+        Assertions.assertEquals("19000101", customer.getCustomerBirth());
+        Assertions.assertEquals("ROLE_ADMIN", customer.getCustomerAuth());
+        Assertions.assertEquals(1_560_000, customer.getCustomerPoint());
+        Assertions.assertInstanceOf(LocalDateTime.class, customer.getSignedUpAt());
+        Assertions.assertInstanceOf(LocalDateTime.class, customer.getLatestLoginAt());
     }
 
 }

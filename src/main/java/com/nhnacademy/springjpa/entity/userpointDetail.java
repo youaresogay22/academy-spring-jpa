@@ -17,8 +17,8 @@ public class userpointDetail {
     private String userPointDetailID;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private users user;
+    @JoinColumn(name = "CustomerId")
+    private Customer customer;
 
     @Column(name = "userpointchange")
     private String userPointChange;
