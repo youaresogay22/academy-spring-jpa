@@ -17,8 +17,8 @@ public class Orders {
     private int OrderID;
 
     @OneToOne
-    @JoinColumn(name = "CustomerId")
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    private users users;
 
     private int Quantity;
 
