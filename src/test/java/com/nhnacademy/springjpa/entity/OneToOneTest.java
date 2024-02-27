@@ -6,6 +6,7 @@ import com.nhnacademy.springjpa.config.WebConfig;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -40,6 +41,11 @@ public class OneToOneTest {
         member.setLocker(locker); // 연관관계 생성
 
         entityManager.persist(member);
+
+        locker.setMember(member);
+
+        Assertions.assertEquals(locker.getMember(), member);
+        Assertions.assertEquals(member.getLocker(), locker);
 
         entityManager.flush();
     }

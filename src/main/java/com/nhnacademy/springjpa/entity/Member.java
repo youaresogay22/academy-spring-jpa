@@ -1,13 +1,11 @@
 package com.nhnacademy.springjpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 // TODO #1: `Member` Entity
 @Getter

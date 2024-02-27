@@ -1,9 +1,7 @@
 package com.nhnacademy.springjpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +17,9 @@ public class Locker {
 
     @Column(name = "locker_name")
     private String name;
+
+    //fk 없으므로 주인  설정
+    @OneToOne(mappedBy = "locker")
+    private Member member;
 
 }
