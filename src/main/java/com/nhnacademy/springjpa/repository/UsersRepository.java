@@ -8,8 +8,9 @@ import java.util.Optional;
 public interface UsersRepository extends JpaRepository<users, String> {
     Optional<users> findByUserIdAndUserPassword(String userId, String userPassword);
 
-    int countByUserAuth(String userAuth);
+    long countByUserAuth(String userAuth);
 
+    long countByUserId(String userId);
 /*
     crudRepo 에서 제공
     Optional<users> findByUserId(String userId);
@@ -18,6 +19,5 @@ public interface UsersRepository extends JpaRepository<users, String> {
     int deleteByUserId(String userId);
     int update(users user);
     int updateLatestLoginAtByUserId(String userId, LocalDateTime latestLoginAt);
-    int countByUserId(String userId);
  */
 }

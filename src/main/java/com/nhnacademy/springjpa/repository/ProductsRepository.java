@@ -12,6 +12,8 @@ interface ProductsRepository extends JpaRepository<Products, String> {
 
     Optional<Products> findByDescription(String description);
 
+    long countByProductID(String productId);
+
     //#todo: 페이지네이션
     Page<Products> pageAll(int page, int pageSize);
 
@@ -21,6 +23,5 @@ interface ProductsRepository extends JpaRepository<Products, String> {
 //    int updateByProductId(String productId);
 //    int deleteByProductId(String productId);
 //    int countAll();
-//    int countByProductId(String productId);
 
 }
