@@ -14,7 +14,7 @@ interface ProductsRepository extends JpaRepository<Products, String> {
 
     Optional<Products> findByDescription(String description);
 
-    long countByProductID(String productId);
+    long countByProductId(String productId);
 
     Page<Products> findAll(Pageable pageable);
 

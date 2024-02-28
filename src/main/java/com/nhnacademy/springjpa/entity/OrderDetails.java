@@ -15,9 +15,11 @@ public class OrderDetails {
     @EmbeddedId
     private PrimaryKey primaryKey;
 
-    private int Quantity;
+    @Column(name = "Quantity")
+    private int quantity;
 
-    private BigDecimal UnitCost;
+    @Column(name = "UnitCost")
+    private BigDecimal unitCost;
 
     @NoArgsConstructor
     @AllArgsConstructor

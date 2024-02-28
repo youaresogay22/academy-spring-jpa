@@ -14,28 +14,28 @@ import java.math.BigDecimal;
 @Setter
 public class Products {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String ProductID;
+    @Column(name = "ProductID")
+    private String productId;
 
     @Column(name = "ModelNumber")
     private String modelNumber;
 
-    @Column(name = "")
-    private String ModelName;
+    @Column(name = "ModelName")
+    private String modelName;
 
-    @Column(name = "")
-    private String ProductThumbnail;
+    @Column(name = "ProductThumbnail")
+    private String productThumbnail;
 
-    @Column(name = "")
-    private String ProductImage;
+    @Column(name = "ProductImage")
+    private String productImage;
 
-    @Column(name = "")
-    private BigDecimal UnitCost;
+    @Column(name = "UnitCost")
+    private BigDecimal unitCost;
 
-    @Column(name = "")
-    private int UnitQuantity;
+    @Column(name = "UnitQuantity")
+    private int unitQuantity;
 
-    @Column(name = "")
-    private String Description;
+    @Column(name = "Description")
+    private String description;
 
 }

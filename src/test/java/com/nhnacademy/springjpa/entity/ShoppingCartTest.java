@@ -46,7 +46,7 @@ class ShoppingCartTest {
         Assertions.assertEquals(101, shoppingCart2.getRecordId());
         Assertions.assertEquals("cartID", shoppingCart2.getCartId());
         Assertions.assertEquals(10, shoppingCart2.getQuantity());
-        Assertions.assertEquals("1", shoppingCart2.getProduct().getProductID());
+        Assertions.assertEquals("1", shoppingCart2.getProduct().getProductId());
         Assertions.assertInstanceOf(LocalDateTime.class, shoppingCart2.getDateCreated());
     }
 }

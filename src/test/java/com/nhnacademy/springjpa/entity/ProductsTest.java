@@ -29,7 +29,7 @@ class ProductsTest {
     public void testProductEntity() {
         Products product = entityManager.find(Products.class, "1");
 
-        Assertions.assertNotNull(product.getProductID());
+        Assertions.assertNotNull(product.getProductId());
         Assertions.assertNotNull(product.getModelNumber());
         Assertions.assertNotNull(product.getModelName());
         Assertions.assertNotNull(product.getProductThumbnail());

@@ -28,8 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UsersRepositoryTest {
     @Autowired
     private UsersRepository userRepository;
-    users user1;
-
+    
     @BeforeEach
     void setUp() {
         users user1 = new users();
@@ -52,20 +51,29 @@ class UsersRepositoryTest {
 
     @Test
     void test_Read() {
-        Assertions.assertEquals(user1, userRepository.findById("user01").orElse(null));
+        Assertions.assertEquals("1q2w3e", userRepository.findById("user01").orElse(null).getUserPassword());
     }
 
     @Test
     void test_Update() {
-        user1.setUserPassword("3e4r5t");
-        userRepository.saveAndFlush(user1);
+        users user2 = new users();
+        user2.setUserId("user01");
+        user2.setUserName("user");
+        user2.setUserPassword("3e4r5t");
+        user2.setUserBirth("19010102");
+        user2.setUserAuth("ROLE_USER");
+        user2.setUserPoint(1_000_000);
+        user2.setCreatedAt(LocalDateTime.now());
+        user2.setLatestLoginAt(LocalDateTime.now().plusHours(1));
+
+        userRepository.saveAndFlush(user2);
 
         Assertions.assertEquals("3e4r5t", userRepository.findById("user01").orElse(null).getUserPassword());
     }
 
     @Test
     void test_Delete() {
-        userRepository.delete(user1);
+        userRepository.deleteById("user01");
 
         Assertions.assertFalse(userRepository.existsById("user01"));
     }

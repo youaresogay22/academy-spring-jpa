@@ -31,7 +31,7 @@ class CategoriesTest {
 
         Categories categories = new Categories();
 
-        categories.setCategoryID(102);
+        categories.setCategoryId(102);
         categories.setCategoryName("이름");
         categories.setProduct(product);
 
@@ -40,8 +40,8 @@ class CategoriesTest {
 
         Categories categories2 = entityManager.find(Categories.class, 102);
 
-        Assertions.assertEquals(102, categories2.getCategoryID());
+        Assertions.assertEquals(102, categories2.getCategoryId());
         Assertions.assertEquals("이름", categories2.getCategoryName());
-        Assertions.assertEquals("1", categories2.getProduct().getProductID());
+        Assertions.assertEquals("1", categories2.getProduct().getProductId());
     }
 }

@@ -51,7 +51,7 @@ class OrderDetailsTest {
         OrderDetails orderDetails2 = entityManager.find(OrderDetails.class, new OrderDetails.PrimaryKey(orders, product));
 
         Assertions.assertEquals(111, orderDetails2.getPrimaryKey().getOrder().getOrderID());
-        Assertions.assertEquals("1", orderDetails2.getPrimaryKey().getProduct().getProductID());
+        Assertions.assertEquals("1", orderDetails2.getPrimaryKey().getProduct().getProductId());
         Assertions.assertEquals(10, orderDetails2.getQuantity());
         Assertions.assertEquals(BigDecimal.TEN, orderDetails2.getUnitCost());
     }

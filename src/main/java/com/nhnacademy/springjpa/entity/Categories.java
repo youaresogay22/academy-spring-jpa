@@ -13,9 +13,11 @@ import javax.persistence.*;
 @Setter
 public class Categories {
     @Id
-    private int CategoryID;
+    @Column(name = "CategoryID")
+    private int categoryId;
 
-    private String CategoryName;
+    @Column(name = "CategoryName")
+    private String categoryName;
 
     @ManyToOne
     @JoinColumn(name = "ProductID")

@@ -14,13 +14,16 @@ import java.time.LocalDateTime;
 @Setter
 public class Orders {
     @Id
-    private int OrderID;
+    @Column(name = "OrderID")
+    private int orderID;
 
     @OneToOne
     @JoinColumn(name = "userId")
     private users users;
 
-    private LocalDateTime OrderDate;
+    @Column(name = "OrderDate")
+    private LocalDateTime orderDate;
 
-    private LocalDateTime ShipDate;
+    @Column(name = "ShipDate")
+    private LocalDateTime shipDate;
 }
