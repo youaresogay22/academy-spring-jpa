@@ -16,12 +16,26 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String ProductID;
-    private String ModelNumber;
+
+    @Column(name = "ModelNumber")
+    private String modelNumber;
+
+    @Column(name = "")
     private String ModelName;
+
+    @Column(name = "")
     private String ProductThumbnail;
+
+    @Column(name = "")
     private String ProductImage;
+
+    @Column(name = "")
     private BigDecimal UnitCost;
+
+    @Column(name = "")
     private int UnitQuantity;
+
+    @Column(name = "")
     private String Description;
 
 }
