@@ -1,6 +1,8 @@
 package com.nhnacademy.springjpa.repository;
 
 import com.nhnacademy.springjpa.entity.Products;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
@@ -14,8 +16,7 @@ interface ProductsRepository extends JpaRepository<Products, String> {
 
     long countByProductID(String productId);
 
-    //#todo: 페이지네이션
-    Page<Products> pageAll(int page, int pageSize);
+    Page<Products> findAll(Pageable pageable);
 
 //       crudRepo 에서 제공
 //    save(Products product);
