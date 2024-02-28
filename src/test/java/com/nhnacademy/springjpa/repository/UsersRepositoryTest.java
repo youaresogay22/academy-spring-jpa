@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 @Transactional
@@ -28,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UsersRepositoryTest {
     @Autowired
     private UsersRepository userRepository;
-    
+
     @BeforeEach
     void setUp() {
         users user1 = new users();

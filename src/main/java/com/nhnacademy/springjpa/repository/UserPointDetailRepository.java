@@ -6,14 +6,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 interface UserPointDetailRepository extends JpaRepository<userpointDetail, String> {
-    Optional<userpointDetail> findByUsers_UserId(String userId);
+    List<userpointDetail> findByUsers_UserId(String userId);
 
     long countByUsers_UserId(String userId);
 
-    long deleteByUsers_UserId(String userId);
+    long deleteAllByUsers_UserId(String userId);
 
     Page<userpointDetail> findByUsers_UserId(String userId, Pageable pageable);
 

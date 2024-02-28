@@ -5,14 +5,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-interface ProductsRepository extends JpaRepository<Products, String> {
-    Optional<Products> findByModelNumber(String modelNumber);
+public interface ProductsRepository extends JpaRepository<Products, String> {
+    List<Products> findByModelNumber(String modelNumber);
 
-    Optional<Products> findByModelName(String modelName);
+    List<Products> findByModelName(String modelName);
 
-    Optional<Products> findByDescription(String description);
+    List<Products> findByDescription(String description);
 
     long countByProductId(String productId);
 
