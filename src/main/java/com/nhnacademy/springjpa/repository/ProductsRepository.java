@@ -17,8 +17,7 @@ public interface ProductsRepository extends JpaRepository<Products, String> {
     long countByProductId(String productId);
 
     Page<Products> findAll(Pageable pageable);
-
-//       crudRepo 에서 제공
+    
 //    save(Products product);
 //    int update(Products product);
 //    int updateByProductId(String productId);

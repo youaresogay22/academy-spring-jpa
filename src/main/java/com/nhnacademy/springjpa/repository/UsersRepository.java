@@ -12,7 +12,6 @@ public interface UsersRepository extends JpaRepository<users, String> {
 
     long countByUserId(String userId);
 /*
-    crudRepo 에서 제공
     Optional<users> findByUserId(String userId);
     int save(users user);
     void updateUserPoint(users user);

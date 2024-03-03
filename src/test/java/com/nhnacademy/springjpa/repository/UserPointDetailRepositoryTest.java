@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
@@ -101,5 +102,15 @@ class UserPointDetailRepositoryTest {
         Assertions.assertEquals(0, userPointDetailRepository.countByUsers_UserId("admin"));
     }
 
+    @Test
+    void findByPointDetailId() {
+        Optional<userpointDetail> test = userPointDetailRepository.getOneFromPointDetailId("test id");
+        Assertions.assertEquals("test id", test.get().getUserPointDetailID());
+    }
 
+    @Test
+    void terminateFromPointDetailId() {
+        userPointDetailRepository.terminateFromPointDetailId("test id");
+        Assertions.assertFalse(userPointDetailRepository.existsById("test id"));
+    }
 }
